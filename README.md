@@ -11,7 +11,7 @@
 
 
 
-*If you use DIRECT for your application or research, please star this repo and cite our related paper.* [bib](https://github.com/ntu-caokun/DIRECT/blob/master/bib.txt)
+*If you use DIRECT for your application or research, please star this repo and cite our related paper.* [bib](https://github.com/ntu-caokun/DIRECT/blob/main/bib.txt)
 
 ## Prerequisites
 Our trajectory planning module is built on top of the [Teach-Repeat-Replan](https://github.com/HKUST-Aerial-Robotics/Teach-Repeat-Replan) package, and has been tested in ROS Melodic (Ubuntu 18.04) and Kinetic (Ubuntu 16.04).
@@ -32,8 +32,8 @@ cd ~/ && bash src/DIRECT/simulation.sh
 ```
 
 The ddp optimizer will solve for a trajectory when you click a target point in the RVIZ display:
-![direct_img](./DIRECT/images/rviz_direct.png)
+![direct_img](./DIRECT/blob/main/images/rviz_direct.png)
 
 
-## 5. Acknowledgements
+## Acknowledgements
 We use the simulation environment and utilities of [Teach-Repeat-Replan](https://github.com/HKUST-Aerial-Robotics/Teach-Repeat-Replan).
