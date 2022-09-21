@@ -1,0 +1,1 @@
+@ARTICLE{9681227,  author={Cao, Kun and Cao, Muqing and Yuan, Shenghai and Xie, Lihua},  journal={IEEE Robotics and Automation Letters},   title={DIRECT: A Differential Dynamic Programming Based Framework for Trajectory Generation},   year={2022},  volume={7},  number={2},  pages={2439-2446},  doi={10.1109/LRA.2022.3142744}}

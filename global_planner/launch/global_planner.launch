@@ -1,0 +1,95 @@
+<launch>
+
+<arg name="map_size_x" default="30.0"/>
+<arg name="map_size_y" default="30.0"/>
+<arg name="map_size_z" default=" 3.0"/>
+
+<arg name="init_x" default="-8.0"/>
+<arg name="init_y" default="-8.0"/>
+<arg name="init_z" default=" 2.0"/>
+
+<arg name="max_vel" default="2.0"/>
+<arg name="max_acc" default="2.0"/>
+<arg name="max_jer" default="10.0"/>
+
+<arg name="resolution" default="0.15"/>
+<arg name="poly_order" default="5"/>
+
+  <node pkg="trr_global_planner" type="tr_node" name="tr_node" output="screen" required = "true">
+      <remap from="~waypoints"   to="/waypoint_generator/waypoints"/>
+      <remap from="~odometry"    to="/drone_1/visual_slam/odom" />
+      <remap from="~map"         to="/random_complex/global_map"/> 
+      <remap from="~joystick"    to="/joy"/> 
+      
+      <param name="write_path"  value="false" /> 
+      <param name="read_path"   value="false" /> 
+
+      <param name="optimization/poly_order"  value="$(arg poly_order)"     /> 
+      <param name="optimization/min_order"   value="3.0"   /> 
+      
+      <param name="map/x_size"       value="$(arg map_size_x)"/>
+      <param name="map/y_size"       value="$(arg map_size_y)"/>
+      <param name="map/z_size"       value="$(arg map_size_z)"/>
+      
+      <param name="map/map_margin"   value="0.0" />
+      <param name="map/resolution"   value="$(arg resolution)" />
+
+      <param name="planning/rho_time"      value="10.0"/>
+      <param name="planning/max_vel"       value="$(arg max_vel)" />
+      <param name="planning/max_acc"       value="$(arg max_acc)" />
+      <param name="planning/max_d_acc"     value="1.0" />
+      <param name="planning/max_jer"       value="$(arg max_jer)" />
+      <param name="planning/max_inf_iter"  value="20"  />
+      <param name="planning/max_clu_iter"  value="20"  />
+
+      <param name="planning/alg_id"      value="8"  />
+      <param name="planning/segNum"      value="1000000"  />
+      <param name="planning/fast_test"      value="17"  />
+      <param name="planning/relaxtol"      value="1.0e-7"  />
+
+      <!-- <param name="planning/benchmark_poly_num"  value="70"  />  -->
+
+      <param name="write_corridor"  value="false" /> 
+      <param name="read_corridor"   value="false" />       
+      <param name="no_cons"   value="false" />     
+
+      <param name="planning/w_Q"        value="1.0e2"  />
+      <param name="planning/w_terminal_line"    value="1.0e2"  />
+      <param name="planning/w_time_line"        value="5.0e1"  />
+
+
+      <param name="planning/time_power"        value="2"  />
+      <param name="planning/w_snap"        value="1.0e0"  />
+      <param name="planning/w_terminal"    value="1.0e2"  />
+      <param name="planning/w_time"        value="20.0e0"  />
+      <param name="planning/iter_max"      value="100"  />
+
+      <param name="planning/w_snap_zero"    value="1.0e0"  />
+      <param name="planning/w_terminal_zero"    value="1.0e0"  />
+      <param name="planning/w_time_zero"        value="1.0e0"  />
+      <param name="planning/iter_max_zero"      value="50"  />
+
+      <param name="planning/w_terminal_bez"    value="100.0e0"  />
+      <param name="planning/w_time_bez"        value="10.0e0"  />
+      <param name="planning/w_snap_bez"        value="1.0e0"  />
+
+      <param name="vis/vis_traj_width"     value="0.1  "/>
+  </node>
+
+
+<!--   <node pkg="local_sensing_node" type="pcl_render_node" name="pcl_render_node" output="screen">
+        <rosparam command="load" file="$(find local_sensing_node)/params/camera.yaml" />
+
+        <param name="sensing_horizon"  value="5.0" />
+        <param name="sensing_rate"     value="30.0"/>
+        <param name="estimation_rate"  value="30.0"/>
+        <param name="map/x_size"     value="$(arg map_size_x)"/>
+        <param name="map/y_size"     value="$(arg map_size_y)"/>
+        <param name="map/z_size"     value="$(arg map_size_z)"/>
+
+        <remap from="~global_map" to="/random_complex/global_map"/>
+        <remap from="~local_map"  to="/click_obstacle_generation/click_new_obs"/>
+        <remap from="~odometry"   to="/drone_1/visual_slam/odom"/>
+  </node> -->
+
+</launch>
